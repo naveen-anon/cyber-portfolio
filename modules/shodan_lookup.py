@@ -1,10 +1,9 @@
-
 import shodan
 from config import SHODAN_API
 
-def shodan_host(ip):
+def shodan_search(ip):
 
-    api = shodan.Shodan(LSkyFO1W4JBevcT5yZoOJXMiCgOZIjqx)
+    api = shodan.Shodan(SHODAN_API)
 
     try:
 
@@ -12,6 +11,6 @@ def shodan_host(ip):
 
         return host
 
-    except:
+    except Exception as e:
 
-        return {"error":"host not found"}
+        return {"error": str(e)}
