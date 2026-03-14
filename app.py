@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,jsonify
+from flask import Flask, render_template, request, jsonify
 from modules.sherlock_search import search_username
 from modules.threat_feed import get_threats
 from modules.ai_osint import ask_ai
@@ -10,24 +10,24 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/username",methods=["POST"])
+@app.route("/username", methods=["POST"])
 def username():
 
     username = request.json["username"]
 
-    data = search_username(username)
+    result = search_username(username)
 
-    return jsonify({"result":data})
+    return jsonify({"result": result})
 
 
-@app.route("/ai",methods=["POST"])
+@app.route("/ai", methods=["POST"])
 def ai():
 
     question = request.json["question"]
 
-    data = ask_ai(question)
+    answer = ask_ai(question)
 
-    return jsonify(data)
+    return jsonify({"reply": answer})
 
 
 @app.route("/threats")
@@ -38,4 +38,5 @@ def threats():
     return jsonify(data)
 
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
