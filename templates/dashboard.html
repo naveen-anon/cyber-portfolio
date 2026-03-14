@@ -1,73 +1,75 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
-<title>OSINT Intelligence Dashboard</title>
+<title>Matrix OSINT Dashboard</title>
 
 <link rel="stylesheet" href="/static/style.css">
-
-<script src="https://unpkg.com/globe.gl"></script>
-<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
 
 </head>
 
 <body>
 
-<h1>Cyber Intelligence Dashboard</h1>
+<canvas id="matrix"></canvas>
 
-<section>
+<div class="container">
+
+<h1>Matrix OSINT Investigation Dashboard</h1>
+
+<div class="card">
+
+<h2>Username Investigation</h2>
+
+<input id="username" placeholder="Enter username">
+
+<button onclick="scan()">Scan</button>
+
+<pre id="username_result"></pre>
+
+</div>
+
+
+<div class="card">
 
 <h2>Shodan Lookup</h2>
 
-<input id="ip">
+<input id="ip" placeholder="Enter IP">
+
 <button onclick="shodan()">Search</button>
 
 <pre id="shodan_result"></pre>
 
-</section>
+</div>
 
-<section>
+
+<div class="card">
 
 <h2>Domain OSINT</h2>
 
-<input id="domain">
+<input id="domain" placeholder="Enter domain">
+
 <button onclick="domain()">Lookup</button>
 
 <pre id="domain_result"></pre>
 
-</section>
+</div>
 
-<section>
+
+<div class="card">
 
 <h2>AI Investigation Report</h2>
 
-<button onclick="report()">Generate</button>
+<button onclick="generateReport()">Generate Report</button>
 
 <pre id="report"></pre>
 
-</section>
+</div>
 
-<section>
+</div>
 
-<h2>Cyber Attack Globe</h2>
-
-<div id="globe"></div>
-
-</section>
-
-<section>
-
-<h2>Investigation Graph</h2>
-
-<div id="network"></div>
-
-</section>
-
+<script src="/static/matrix.js"></script>
 <script src="/static/dashboard.js"></script>
-<script src="/static/map.js"></script>
-<script src="/static/graph.js"></script>
 
 </body>
 
